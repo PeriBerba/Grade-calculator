@@ -1,0 +1,55 @@
+data = {}
+def login():
+    
+        Name = input("Enter your Name :")
+        Name_Full = Name.replace(' ', '_')
+        Course = input("Enter your Course {} :".format(Name))
+        Course_Full = Course.replace(' ', '_')
+        Prelim = float(input("Enter Prelim Grade: "))
+        Midterm = float(input("Enter Midterm Grade: "))
+        Final = float(input("Enter Final Grade: "))
+        print ('This is your Semestral grade') 
+       
+        Final_Average = (float(Prelim) + float(Midterm)+float(Final)) / 3
+        Final_Average_Round = round(Final_Average, 2)
+
+        Happy = ('\U0001F600')
+        Laugh = ('\U0001F606')
+        Sad = ("\U0001F62D")
+        if Final_Average > 70:
+                result = Happy
+        elif Final_Average == 70:
+                result = Laugh
+        else:
+                result = Sad
+
+        Prelim_str = str(Prelim).split()
+        Midterm_str= str(Midterm).split()
+        Final_str  = str(Final).split()
+        Final_Average_str = str(Final_Average_Round).split()
+        Name_Full_str = str(Name_Full).split()
+        Course_Full_str = str(Course_Full).split()
+
+        Name_key = Name_Full_str[0]
+        Course_key = Course_Full_str[0]
+        Prelim_key = Prelim_str[0]
+        Midterm_key = Midterm_str[0]
+        Final_key = Final_str[0]
+        Final_Average_key = Final_Average_str[0]
+        emoji_key = result[0]
+
+        data [" 1:Name:                 " + Name_key] = \
+        {
+                2:"Course:               " + Course_key.upper(),
+                3:"Prelim Grade:         " + Prelim_key,
+                4:"Midterm Grade:        " + Midterm_key,
+                5:"Final Grade:          " + Final_key,
+                6:"Final Average:        " + Final_Average_key,
+                7:'Result:               ' + emoji_key
+      }
+        for tab in data:
+                print(tab)
+                for tabs in data[tab]:
+                        print(tabs, ":", data[tab][tabs])
+       
+login()
